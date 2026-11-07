@@ -590,90 +590,10 @@ function showToast(text) {
   }
 }
 
-// Interactive Cursor-Following Head on Homepage (Bigger head, rotates up & down + inverts horizontally when looking the other way)
-function initHeadFollowCursor() {
-  const headEl = document.getElementById('heroHeadImg');
-  const cardEl = document.getElementById('heroProfileCard');
-  if (!headEl || !cardEl) return;
-
-  const baseHeadScale = 1.65; // Bigger bobble-style head scale
-  let targetX = 0;
-  let targetY = 0;
-  let targetRotZ = 0;
-  let targetRotX = 0;
-  let targetDir = 1;
-
-  let currentX = 0;
-  let currentY = 0;
-  let currentRotZ = 0;
-  let currentRotX = 0;
-  let currentDir = 1;
-
-  window.addEventListener('mousemove', (e) => {
-    const rect = cardEl.getBoundingClientRect();
-    // Neck / Head pivot center inside the square card
-    const pivotX = rect.left + rect.width * 0.508;
-    const pivotY = rect.top + rect.height * 0.21;
-
-    const dx = e.clientX - pivotX;
-    const dy = e.clientY - pivotY;
-
-    // Invert horizontally when cursor is on the right vs left side
-    if (dx > 12) {
-      targetDir = -1;
-    } else if (dx < -12) {
-      targetDir = 1;
-    }
-
-    // Calculate vertical up/down angle from head to cursor
-    const horizDist = Math.max(70, Math.abs(dx));
-    const rawPitchDeg = Math.atan2(dy, horizDist) * (180 / Math.PI);
-    const clampedPitch = Math.max(-35, Math.min(35, rawPitchDeg));
-
-    // Rotate head up when cursor is above, and down when cursor is below
-    targetRotZ = -clampedPitch * 0.85;
-
-    // Normalize relative to viewport dimensions (-1 to 1)
-    const normX = Math.max(-1, Math.min(1, dx / (window.innerWidth * 0.4)));
-    const normY = Math.max(-1, Math.min(1, dy / (window.innerHeight * 0.4)));
-
-    // Strong up-and-down nod & 3D vertical pitch
-    targetRotX = -normY * 22;
-    targetX = normX * 8;
-    targetY = normY * 14;
-  });
-
-  window.addEventListener('mouseleave', () => {
-    targetX = 0;
-    targetY = 0;
-    targetRotZ = 0;
-    targetRotX = 0;
-    targetDir = 1;
-  });
-
-  function animateHead() {
-    const ease = 0.15;
-    currentX += (targetX - currentX) * ease;
-    currentY += (targetY - currentY) * ease;
-    currentRotZ += (targetRotZ - currentRotZ) * ease;
-    currentRotX += (targetRotX - currentRotX) * ease;
-
-    // Instant flip (no animation when inverting horizontally)
-    const scaleX = (targetDir * baseHeadScale).toFixed(3);
-    const scaleY = baseHeadScale.toFixed(3);
-
-    headEl.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) rotateX(${currentRotX.toFixed(2)}deg) scale(${scaleX}, ${scaleY}) rotate(${currentRotZ.toFixed(2)}deg)`;
-    requestAnimationFrame(animateHead);
-  }
-
-  requestAnimationFrame(animateHead);
-}
-
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initScrollSpy();
   renderCategories();
   selectProject('codeshark');
-  initHeadFollowCursor();
 });
