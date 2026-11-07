@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home (Page 1 of 5) — Ron Karlo Lanzanas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .wf-canvas { border: 2px solid #27272a; background: #ffffff; }
+    .wf-border-b { border-bottom: 2px solid #27272a; }
+    .wf-box { border: 2px solid #27272a; background: #fafafa; position: relative; }
+  </style>
+</head>
+<body class="bg-zinc-100 min-h-screen py-8 px-4 sm:px-8 text-zinc-900">
+
+  <!-- TOP PAGINATION NAVIGATOR -->
+  <div class="max-w-4xl mx-auto mb-6 bg-white border-2 border-zinc-900 p-4 rounded-xl shadow-sm flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="px-2.5 py-1 bg-zinc-900 text-white text-xs font-bold uppercase rounded">Page 1 of 5</span>
+      <span class="font-bold text-sm">HOME PAGE</span>
+    </div>
+    
+    <!-- Multi-Page Links -->
+    <div class="flex flex-wrap items-center gap-1.5 text-xs font-bold">
+      <a href="index.html" class="px-3 py-1 bg-zinc-900 text-white rounded border border-zinc-900">1. HOME</a>
+      <a href="about.html" class="px-3 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">2. ABOUT</a>
+      <a href="services.html" class="px-3 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">3. SERVICES</a>
+      <a href="portfolio.html" class="px-3 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">4. PORTFOLIO</a>
+      <a href="contact.html" class="px-3 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">5. CONTACT</a>
+    </div>
+
+    <div class="text-xs font-mono text-zinc-600">
+      Ronkarlo.lanzanas905@gmail.com
+    </div>
+  </div>
+
+  <!-- PAGE 1 CANVAS: HOME (HEADER / HERO) -->
+  <div class="wf-canvas max-w-4xl mx-auto">
+    
+    <!-- Navbar Header -->
+    <header class="wf-border-b px-6 sm:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="font-extrabold text-xl tracking-tight uppercase">
+        Ron Karlo Lanzanas
+      </a>
+      <nav class="flex items-center space-x-6 text-sm font-bold uppercase tracking-wider">
+        <a href="index.html" class="underline decoration-2">HOME</a>
+        <a href="about.html" class="hover:underline">ABOUT</a>
+        <a href="services.html" class="hover:underline">SERVICES</a>
+        <a href="portfolio.html" class="hover:underline">PORTFOLIO</a>
+        <a href="contact.html" class="hover:underline">CONTACT</a>
+      </nav>
+    </header>
+
+    <!-- Hero Content (Matches Sketch) -->
+    <section class="px-6 sm:px-10 py-16 sm:py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        
+        <!-- Left: Header + Supporting Text + Button -->
+        <div class="space-y-5">
+          <span class="text-xs font-bold uppercase tracking-widest text-zinc-500">Portfolio • Age 20</span>
+          <h1 class="text-4xl sm:text-5xl font-black uppercase tracking-tight leading-tight">
+            Ron Karlo Lanzanas
+          </h1>
+          <p class="text-base text-zinc-700 leading-relaxed">
+            Web Designer, Web Developer &amp; Computer Hardware Specialist. Creating modern web solutions and repairing computer hardware parts.
+          </p>
+
+          <div class="pt-2 flex flex-wrap gap-3">
+            <a href="contact.html" class="border-2 border-zinc-900 bg-zinc-900 text-white hover:bg-zinc-800 px-7 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider transition">
+              Get in Touch
+            </a>
+            <a href="services.html" class="border-2 border-zinc-900 bg-white hover:bg-zinc-100 text-zinc-900 px-7 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider transition">
+              View Services
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Box with X (Universal Wireframe Image/Visual Box) -->
+        <div class="w-full aspect-[4/3] wf-box relative overflow-hidden flex items-center justify-center">
+          <svg class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="none" viewBox="0 0 100 100">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="#27272a" stroke-width="1.5" />
+            <line x1="0" y1="100" x2="100" y2="0" stroke="#27272a" stroke-width="1.5" />
+          </svg>
+          <div class="z-10 bg-white/95 border-2 border-zinc-900 p-3 text-center">
+            <div class="font-bold text-sm">Visual / Portrait Placeholder</div>
+            <div class="text-[11px] text-zinc-500 font-mono mt-0.5">Ron Karlo Lanzanas (Age 20)</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Bottom Page Navigation -->
+    <div class="wf-border-t border-t-2 border-zinc-900 p-4 bg-zinc-50 flex items-center justify-between text-xs font-bold uppercase">
+      <span class="text-zinc-500 font-mono">Page 1: Home</span>
+      <a href="about.html" class="inline-flex items-center text-zinc-900 hover:underline">
+        Next: Page 2 (About) →
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ron Karlo Lanzanas — Creative &amp; Technical Portfolio</title>
+  
+  <!-- Website Favicon from uploaded logo -->
+  <link rel="icon" type="image/png" href="site-logo.png">
+
+  <!-- Modern Clean Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- External CSS Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Ambient lighting effect -->
+  <div class="bg-ambient"></div>
+
+  <!-- Header / Navigation Bar -->
+  <header>
+    <div class="container nav-inner">
+      <a href="#home" class="brand-logo" title="Ron Karlo Lanzanas Portfolio">
+        <img src="site-logo.png" alt="Ron Karlo Lanzanas Logo" class="nav-logo-img">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#profile-overview">Profile &amp; CV</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#portfolio">Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <a href="#contact" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.85rem;">Let's Talk</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="container hero-grid">
+      <div class="hero-text-content">
+        <div class="hero-meta">
+          <span class="hero-meta-dot"></span>
+          <span>Available for work &bull; 3rd-Year Computer Science &bull; 3CS5</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Ron Karlo Lanzanas
+          <span>Computer Science &amp; Digital Design</span>
+        </h1>
+
+        <!-- User's profile summary -->
+        <p class="hero-description">
+          Currently a Bachelor of Science in Computer Science student at City College of Calamba with core knowledge of software development, web development (HTML, CSS), database fundamentals (MySQL), and practical hardware servicing. Driven to expand technical competencies and apply cross-functional skills to real-world IT solutions.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#portfolio" class="btn btn-primary">
+            <span>Explore Works</span>
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="#profile-overview" class="btn btn-outline">
+            <span>View Profile &amp; CV</span>
+            <i class="fa-solid fa-id-card"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Portrait Cutout with Interactive Cursor-Following Head -->
+      <div class="hero-image-wrapper">
+        <div class="hero-card-stack">
+          <div class="profile-card" id="heroProfileCard">
+            <img src="ron-body-nobg.png" id="heroBodyImg" class="hero-body-layer" alt="Ron Karlo Lanzanas Body Cutout">
+            <img src="ron-head-nobg.png" id="heroHeadImg" class="hero-head-layer" alt="Ron Karlo Lanzanas Interactive Head">
+
+            <div class="profile-badge-overlay">
+              <div>
+                <div class="badge-name">Ron Karlo Lanzanas</div>
+                <div class="badge-role">Computer Science &bull; 3CS5</div>
+              </div>
+              <div class="badge-status">
+                <span class="hero-meta-dot"></span> <span id="heroStatusLabel">Active</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about" class="section-padding">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <div class="section-label">
+            <i class="fa-solid fa-terminal"></i> About Me
+          </div>
+          <h2 class="section-title">Driven by clean architecture, visual precision, and accessible design.</h2>
+          <p>
+            I am Ron Karlo Lanzanas, a 3rd-year Computer Science student at the City College of Calamba specializing in technical diagnostics and modern digital design. I bridge complex backend logic with clean, intuitive user experiences.
+          </p>
+          <p>
+            Whether it's building interactive desktop games like CodeShark, architecting responsive platforms like the TechWEEK 2026 portal, authoring clean digital layouts, or debugging intricate system problems, I deliver detail-oriented, high-performance work with speed and precision.
+          </p>
+
+          <div class="about-email-box">
+            <div>
+              <div class="email-label">Institutional Contact</div>
+              <div class="email-val">rmlanzanas@ccc.edu.ph</div>
+            </div>
+            <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="copyEmail()">
+              <i class="fa-regular fa-copy"></i> Copy
+            </button>
+          </div>
+        </div>
+
+        <div class="about-visual-card">
+          <div class="about-stat">
+            <div class="about-stat-num">CodeShark</div>
+            <div class="about-stat-desc">Featured Desktop Typing Game &amp; Engineering Project</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">3rd Yr</div>
+            <div class="about-stat-desc">Computer Science Student at City College of Calamba</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">&lt; 24h</div>
+            <div class="about-stat-desc">Average hardware diagnostic &amp; turnaround time</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       PROFILE & CV OVERVIEW (Structured after Reference 1 with Data from Reference 2)
+       ===================================================================== -->
+  <section id="profile-overview" class="cv-overview-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label"><i class="fa-solid fa-address-card"></i> Comprehensive Overview</div>
+          <h2 class="section-title">Profile, Experience &amp; Education</h2>
+        </div>
+        <div class="section-link-action">
+          <a href="#contact" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.82rem;">
+            <span>Get in Touch</span> &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="cv-grid-container">
+        <!-- Col 1: Identity Card & Personal Info -->
+        <div class="cv-card-identity">
+          <div>
+            <div class="cv-avatar-box">
+              <img src="formal_portrait.jpg" alt="Ron Karlo Lanzanas Formal Photo">
+            </div>
+
+            <h3 class="cv-identity-name">Ron Karlo Lanzanas</h3>
+            <p class="cv-identity-title">BS in Computer Science &bull; 3CS5</p>
+
+            <ul class="cv-meta-list">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Brgy. Sampiruhan, Calamba City, Laguna</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <span>09615669825</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <span>rmlanzanas@ccc.edu.ph</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-language"></i>
+                <span>English &bull; Filipino</span>
+              </li>
+            </ul>
+          </div>
+
+          <div style="padding-top: 1.2rem; border-top: 1px solid var(--border-color);">
+            <div class="cv-data-grid">
+              <div class="cv-data-item">
+                <span class="cv-data-label">Date of Birth</span>
+                <p class="cv-data-value">May 9, 2006</p>
+              </div>
+              <div class="cv-data-item">
+                <span class="cv-data-label">Civil Status</span>
+                <p class="cv-data-value">Single</p>
+              </div>
+              <div class="cv-data-item">
+                <span class="cv-data-label">Citizenship</span>
+                <p class="cv-data-value">Filipino</p>
+              </div>
+              <div class="cv-data-item">
+                <span class="cv-data-label">Religion</span>
+                <p class="cv-data-value">Roman Catholic</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Experience & Career Objective -->
+        <div>
+          <!-- Career Objective (Inspired by Ref 1 Objective box) -->
+          <div class="cv-block">
+            <div class="cv-block-header">
+              <i class="fa-solid fa-bullseye"></i> Career Objective
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.65;">
+              My goal is to contribute technical precision, develop accessible and intuitive digital interfaces, and apply core programming and system troubleshooting competencies to real-world IT and software environments. Driven to continuously learn and innovate across modern web and desktop systems.
+            </p>
+          </div>
+
+          <!-- Professional Experience (from Resume) -->
+          <div class="cv-block">
+            <div class="cv-block-header">
+              <i class="fa-solid fa-briefcase"></i> Experience &bull; SPES Beneficiary
+            </div>
+
+            <!-- Job 1 -->
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">June &ndash; July 2026</div>
+              <div class="cv-item-role">Barangay Office &amp; Daycare Center Deployment</div>
+              <div class="cv-item-place">SPES Beneficiary &bull; Local Government</div>
+              <ul class="cv-item-desc">
+                <li>Encoded and issued official documents, including Barangay Indigency, Clearances, and Business Permits.</li>
+                <li>Handled daily office filing, record-keeping, and front-desk assistance for local residents.</li>
+                <li>Assisted daycare teachers during classroom instruction, student activities, and administrative tasks.</li>
+              </ul>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">June &ndash; July 2025</div>
+              <div class="cv-item-role">City Hall Deployment</div>
+              <div class="cv-item-place">SPES Beneficiary &bull; Calamba City Hall</div>
+              <ul class="cv-item-desc">
+                <li>Assisted with document processing, filing, and office clerical tasks across municipal departments.</li>
+                <li>Helped manage incoming inquiries and supported general office operations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3: Education & Technical Competencies -->
+        <div>
+          <!-- Education History -->
+          <div class="cv-block">
+            <div class="cv-block-header">
+              <i class="fa-solid fa-graduation-cap"></i> Education
+            </div>
+
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">2024 &ndash; Present (Tertiary)</div>
+              <div class="cv-item-role">Bachelor of Science in Computer Science</div>
+              <div class="cv-item-place">City College of Calamba &bull; 3CS5</div>
+            </div>
+
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">2022 &ndash; 2024 (Senior High)</div>
+              <div class="cv-item-role">Information and Communications Technology (ICT)</div>
+              <div class="cv-item-place">International Electronics and Technical Institute, Inc.</div>
+            </div>
+
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">2018 &ndash; 2022 (High School)</div>
+              <div class="cv-item-role">Secondary Education</div>
+              <div class="cv-item-place">Calamba Bayside Integrated School</div>
+            </div>
+
+            <div class="cv-timeline-item">
+              <div class="cv-item-date">2012 &ndash; 2018 (Primary)</div>
+              <div class="cv-item-role">Primary Education</div>
+              <div class="cv-item-place">Sampiruhan Elementary School</div>
+            </div>
+          </div>
+
+          <!-- Hard & Soft Skills Box (Inspired by Ref 1 Hard/Soft Skills layout) -->
+          <div class="cv-block">
+            <div class="cv-block-header">
+              <i class="fa-solid fa-code"></i> Technical &amp; Design Skills
+            </div>
+            <div class="cv-pills-row" style="margin-bottom: 1.2rem;">
+              <span class="cv-pill">HTML5</span>
+              <span class="cv-pill">CSS3</span>
+              <span class="cv-pill">MySQL</span>
+              <span class="cv-pill">C</span>
+              <span class="cv-pill">C++</span>
+              <span class="cv-pill">Java OOP</span>
+              <span class="cv-pill">Figma</span>
+              <span class="cv-pill">Git / GitHub</span>
+              <span class="cv-pill">Hardware Servicing</span>
+              <span class="cv-pill">Canva</span>
+              <span class="cv-pill">CapCut</span>
+            </div>
+
+            <div class="cv-block-header" style="margin-top: 1.2rem;">
+              <i class="fa-solid fa-user-check"></i> Interpersonal &bull; Soft Skills
+            </div>
+            <div class="cv-pills-row">
+              <span class="cv-pill">Clear Communication</span>
+              <span class="cv-pill">Goal Oriented</span>
+              <span class="cv-pill">Collaborative Teamwork</span>
+              <span class="cv-pill">Time Management</span>
+              <span class="cv-pill">System Troubleshooting</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label"><i class="fa-solid fa-sliders"></i> Core Capabilities</div>
+          <h2 class="section-title">Skills &amp; Specializations</h2>
+        </div>
+        <div class="section-link-action">
+          <span>Continuous Learning</span> &rarr;
+        </div>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Technical Skills -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-box">
+              <i class="fa-solid fa-microchip"></i>
+            </div>
+            <div>
+              <h3 class="skill-cat-title">Technical Diagnostics &amp; Development</h3>
+              <p class="skill-cat-subtitle">Hardware diagnostics, web code, &amp; infrastructure</p>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">PC Hardware Diagnostics</span>
+            <span class="skill-tag">Thermal &amp; Overheating Fixes</span>
+            <span class="skill-tag">HTML5 / CSS3 Grid &amp; Flexbox</span>
+            <span class="skill-tag">Game Logic &amp; WPM Tracking (GML)</span>
+            <span class="skill-tag">Java OOP Development</span>
+            <span class="skill-tag">Git &amp; GitHub Pages</span>
+          </div>
+        </div>
+
+        <!-- Design & Analytical Skills -->
+        <div class="skill-category-card">
+          <div class="skill-cat-header">
+            <div class="skill-icon-box">
+              <i class="fa-solid fa-palette"></i>
+            </div>
+            <div>
+              <h3 class="skill-cat-title">Visual Systems &amp; Digital Design</h3>
+              <p class="skill-cat-subtitle">Identity, editorial layouts, &amp; typography</p>
+            </div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Game UI / State Design</span>
+            <span class="skill-tag">Typography Brand Poster</span>
+            <span class="skill-tag">Editorial Magazine Layout</span>
+            <span class="skill-tag">Observa, Swiftly &amp; Paciencia Logos</span>
+            <span class="skill-tag">Print Media Proposals</span>
+            <span class="skill-tag">Accessible User Interfaces</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio & Project Archive Section (Separated into Categories with streamlined spacing) -->
+  <section id="portfolio" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label"><i class="fa-solid fa-briefcase"></i> Selected Works</div>
+          <h2 class="section-title">Portfolio &amp; Project Archive</h2>
+        </div>
+      </div>
+
+      <!-- Quick Category Jump Bar -->
+      <div class="category-quick-nav">
+        <button class="cat-pill-btn active" data-cat="software" onclick="jumpToCategory('software')">
+          <i class="fa-solid fa-code"></i> Software &amp; Web Platforms
+        </button>
+        <button class="cat-pill-btn" data-cat="print" onclick="jumpToCategory('print')">
+          <i class="fa-solid fa-print"></i> Print &amp; Poster Design
+        </button>
+        <button class="cat-pill-btn" data-cat="editorial" onclick="jumpToCategory('editorial')">
+          <i class="fa-solid fa-book-open"></i> Editorial &amp; Publications
+        </button>
+        <button class="cat-pill-btn" data-cat="branding" onclick="jumpToCategory('branding')">
+          <i class="fa-solid fa-shapes"></i> Brand Identity &amp; Logos
+        </button>
+      </div>
+
+      <!-- Categories Container (Separate category sections rendered by main.js) -->
+      <div id="categoriesContainer"></div>
+
+      <!-- Project Detail Box with Live Preview and Redirect Action Links -->
+      <div class="project-detail-panel" id="projectDetailPanel">
+        <div class="project-detail-header">
+          <div>
+            <div class="section-label" id="detailNumber">PROJECT № 01</div>
+            <h3 class="project-detail-title" id="detailTitle">CodeShark</h3>
+          </div>
+          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+            <a href="https://drive.google.com/drive/folders/1fra4YcWejXfrocQfoYDBPHqZmjQgm9KX" target="_blank" rel="noopener noreferrer" id="detailViewBtn" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.88rem;">
+              <span>Download CodeShark</span>
+              <i class="fa-solid fa-download"></i>
+            </a>
+            <a href="https://drive.google.com/drive/folders/1fra4YcWejXfrocQfoYDBPHqZmjQgm9KX" target="_blank" rel="noopener noreferrer" id="detailDriveBtn" class="btn btn-outline" style="padding: 0.65rem 1.3rem; font-size: 0.88rem;">
+              <span>Open Project Folder</span>
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="project-detail-grid">
+          <div>
+            <div class="detail-grid">
+              <div class="detail-item">
+                <h4><i class="fa-solid fa-triangle-exclamation"></i> Problem</h4>
+                <p id="detailProblem">
+                  Creating an engaging, gamified desktop learning tool where programming students practice coding syntax, typing speed (WPM), accuracy, and problem solving in solo and local multiplayer modes.
+                </p>
+              </div>
+
+              <div class="detail-item">
+                <h4><i class="fa-solid fa-code"></i> Tech Stack / Tools</h4>
+                <p id="detailTech">
+                  GameMaker Studio, GML (GameMaker Language), Sound Design, Local Multiplayer Socket / Peer Architecture, UI State Machine.
+                </p>
+              </div>
+
+              <div class="detail-item">
+                <h4><i class="fa-solid fa-circle-check"></i> Outcome</h4>
+                <p id="detailOutcome">
+                  Designed and engineered a complete interactive game featuring single player modes, local multiplayer lobby, WPM tracking, and sound system.
+                </p>
+              </div>
+            </div>
+
+            <!-- Developers attribution field (shown ONLY when developers are defined) -->
+            <div id="detailDevsBox" style="margin-bottom: 1.8rem; padding: 0.9rem 1.2rem; background: var(--badge-bg); border: 1px solid var(--border-color); border-radius: 12px;">
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); display: block; margin-bottom: 0.2rem;">
+                <i class="fa-solid fa-users"></i> Project Developers
+              </span>
+              <span id="detailDevs" style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
+                Lanzanas, Ron Karlo &bull; Cacao, John Carlo &bull; Jacobo, Elijah Gabriel
+              </span>
+            </div>
+
+            <div class="detail-actions">
+              <a href="#contact" class="btn btn-outline" style="padding: 0.75rem 1.6rem;">
+                <span>Inquire About Similar Work</span>
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Clickable Sidebar Thumbnail that also redirects to the project view -->
+          <div class="detail-preview-box" title="Click to view full asset" id="detailPreviewBox">
+            <img src="project_codeshark.jpg" id="detailPreviewImg" alt="Project Preview">
+            <div class="detail-preview-badge">
+              <i class="fa-solid fa-expand"></i> Click to Open Full Asset
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="section-padding">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-label"><i class="fa-regular fa-comment-dots"></i> Feedback</div>
+          <h2 class="section-title">Client &amp; Peer Testimonials</h2>
+        </div>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div>
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">
+              "Ron fixed my PC's overheating issues in under 24 hours. The system runs completely silent and temperatures are significantly cooler."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">DR</div>
+            <div>
+              <div class="author-name">Desktop Repair Client</div>
+              <div class="author-title">Hardware Diagnostic Client</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div>
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">
+              "His designs are clean &amp; accessible. Clear attention to layout hierarchy, readability, and modern aesthetics."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">CS</div>
+            <div>
+              <div class="author-name">Computer Studies Instructor</div>
+              <div class="author-title">Faculty Reviewer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div>
+            <i class="fa-solid fa-quote-left quote-icon"></i>
+            <p class="testimonial-text">
+              "Has very good service, always reliable and upfront about technical solutions and timelines."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">RC</div>
+            <div>
+              <div class="author-name">Regular Client</div>
+              <div class="author-title">IT Services &amp; Consultation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Message Section -->
+  <section id="contact" class="section-padding">
+    <div class="container">
+      <div class="contact-grid">
+        <!-- Direct Contacts Column -->
+        <div class="contact-info-col">
+          <div class="section-label"><i class="fa-solid fa-envelope"></i> Get In Touch</div>
+          <h3>Let's collaborate on your next project.</h3>
+          <p>
+            Have a project in mind, need diagnostic troubleshooting, or want to discuss creative design? Reach out directly or send an inquiry.
+          </p>
+
+          <div class="direct-contact-item">
+            <div class="direct-icon">
+              <i class="fa-solid fa-at"></i>
+            </div>
+            <div class="direct-detail">
+              <h4>Institutional Email</h4>
+              <a href="mailto:rmlanzanas@ccc.edu.ph">rmlanzanas@ccc.edu.ph</a>
+            </div>
+          </div>
+
+          <div class="direct-contact-item">
+            <div class="direct-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="direct-detail">
+              <h4>Institution &amp; Section</h4>
+              <span style="color: var(--text-main); font-weight: 600;">City College of Calamba &bull; 3CS5</span>
+            </div>
+          </div>
+
+          <!-- Social Links with requested URLs -->
+          <div class="social-links">
+            <a href="https://www.facebook.com/RonKarlo.L/" target="_blank" rel="noopener noreferrer" class="social-btn">
+              <i class="fa-brands fa-facebook"></i> Facebook
+            </a>
+            <a href="https://www.instagram.com/rk.lanz/" target="_blank" rel="noopener noreferrer" class="social-btn">
+              <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://github.com/RKLanzanas" target="_blank" rel="noopener noreferrer" class="social-btn">
+              <i class="fa-brands fa-github"></i> GitHub
+            </a>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="contact-form-card">
+          <form id="contactForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+              <label for="formEmail">Your Email</label>
+              <input type="email" id="formEmail" class="form-control" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formSubject">Subject</label>
+              <input type="text" id="formSubject" class="form-control" placeholder="Project Inquiry / Tech Collaboration" required>
+            </div>
+
+            <div class="form-group">
+              <label for="formMessage">Message</label>
+              <textarea id="formMessage" class="form-control" placeholder="How can I assist you with your project or diagnostic needs?" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem;">
+              <span>Submit Message</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean, Spacious, Highly-Readable Balanced Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand & Large Visible Logo -->
+        <div class="footer-brand-wrap">
+          <div class="footer-brand">
+            <img src="site-logo.png" alt="Ron Karlo Lanzanas Official Logo" class="footer-logo-img">
+            <span class="footer-brand-text">LANZANAS&reg;</span>
+          </div>
+          <p class="footer-brand-tagline">
+            Bridging technical system diagnostics and modern digital design. 3rd-year Computer Science student at the City College of Calamba.
+          </p>
+          <div class="footer-badge-item">
+            <span class="hero-meta-dot"></span> Available for technical inquiries &amp; design
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#profile-overview">Profile &amp; CV</a></li>
+            <li><a href="#skills">Capabilities</a></li>
+            <li><a href="#portfolio">Project Archive</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Social Profiles -->
+        <div class="footer-col">
+          <h5>Social Profiles</h5>
+          <ul>
+            <li><a href="https://www.facebook.com/RonKarlo.L/" target="_blank" rel="noopener">Facebook <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i></a></li>
+            <li><a href="https://www.instagram.com/rk.lanz/" target="_blank" rel="noopener">Instagram <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i></a></li>
+            <li><a href="https://github.com/RKLanzanas" target="_blank" rel="noopener">GitHub <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i></a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Direct Inquiries -->
+        <div class="footer-col">
+          <h5>Direct Contact</h5>
+          <a href="mailto:rmlanzanas@ccc.edu.ph" class="footer-contact-link">
+            rmlanzanas@ccc.edu.ph
+          </a>
+          <p style="font-size: 0.78rem; color: var(--text-dim); margin-top: 0.5rem; line-height: 1.5;">
+            City College of Calamba &bull; 3CS5 Department of Computer Studies
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Ron Karlo Lanzanas &bull; City College of Calamba &bull; All Rights Reserved.
+        </div>
+        <div>
+          <a href="#home">Back to top &uarr;</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Pop-Out: Full Project Viewer -->
+  <div class="project-modal" id="projectModal" onclick="closeProjectModal(event)">
+    <div class="modal-dialog" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <div>
+          <span class="modal-badge" id="modalBadge">SOFTWARE / GAME</span>
+          <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-image-wrapper" id="modalImageWrapper">
+          <!-- Single image view -->
+          <img src="" id="modalImg" alt="Project Full Preview">
+          <!-- Fanned Playing-Card Deck Gallery (shown when project has multiple photos) -->
+          <div class="fanned-deck-stage" id="modalFannedDeck" style="display: none;">
+            <div class="fanned-deck-cards" id="fannedDeckCards"></div>
+            <div class="fanned-deck-controls">
+              <button type="button" class="deck-nav-btn" onclick="cycleFannedCard(-1, event)" aria-label="Previous Photo">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <span class="fanned-deck-counter" id="fannedDeckCounter">1 / 4 &bull; Click any card to bring to front</span>
+              <button type="button" class="deck-nav-btn" onclick="cycleFannedCard(1, event)" aria-label="Next Photo">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-content-details">
+          <div class="modal-detail-item">
+            <h4><i class="fa-solid fa-layer-group"></i> Category &bull; Tag</h4>
+            <p id="modalTag">Category Description</p>
+          </div>
+          
+          <!-- Modal developers field: only shown if developers exist -->
+          <div class="modal-detail-item" id="modalDevsBox">
+            <h4><i class="fa-solid fa-users"></i> Developers</h4>
+            <p id="modalDevs" style="font-weight: 600; color: var(--text-main);"></p>
+          </div>
+
+          <div class="modal-detail-item">
+            <h4><i class="fa-solid fa-triangle-exclamation"></i> Problem</h4>
+            <p id="modalProblem">Problem statement</p>
+          </div>
+          <div class="modal-detail-item">
+            <h4><i class="fa-solid fa-code"></i> Tech Stack</h4>
+            <p id="modalTech">Technologies used</p>
+          </div>
+          <div class="modal-detail-item">
+            <h4><i class="fa-solid fa-circle-check"></i> Outcome</h4>
+            <p id="modalOutcome">Outcome result</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="closeProjectModal()" style="padding: 0.65rem 1.3rem;">
+          Close
+        </button>
+        <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
+          <a href="#" target="_blank" rel="noopener noreferrer" id="modalDriveBtn" class="btn btn-outline" style="padding: 0.65rem 1.4rem;">
+            <span>Project Folder</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" id="modalActionBtn" class="btn btn-primary" style="padding: 0.65rem 1.5rem;">
+            <span>Download / View Asset</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification element -->
+  <div class="toast" id="toastNotification">
+    <i class="fa-solid fa-check"></i>
+    <span id="toastMsg">Message sent successfully!</span>
+  </div>
+
+  <!-- External Interactive JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

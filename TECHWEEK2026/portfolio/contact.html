@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact (Page 7) — Ron Karlo Lanzanas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Space Grotesk', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .lofi-canvas { border: 2px solid #18181b; background: #ffffff; }
+    .lofi-border-b { border-bottom: 2px solid #18181b; }
+    .annotation-note {
+      background: #fef08a;
+      border: 1px dashed #ca8a04;
+      color: #713f12;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body class="bg-zinc-100 min-h-screen py-8 px-4 sm:px-8 text-zinc-900">
+
+  <!-- TOP PAGINATION NAVIGATOR -->
+  <div class="max-w-5xl mx-auto mb-6 bg-white border-2 border-zinc-900 p-4 rounded-xl shadow-sm flex flex-wrap items-center justify-between gap-3">
+    <div class="flex items-center space-x-2">
+      <span class="px-2.5 py-1 bg-zinc-900 text-white text-xs font-bold uppercase rounded">Page 7 of 7</span>
+      <span class="font-bold text-sm">CONTACT PAGE</span>
+    </div>
+    
+    <div class="flex flex-wrap items-center gap-1.5 text-xs font-bold">
+      <a href="index.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">1. Home</a>
+      <a href="about.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">2. About</a>
+      <a href="skills.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">3. Skills</a>
+      <a href="portfolio.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">4. Portfolio</a>
+      <a href="project-detail.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">5. Inner Detail</a>
+      <a href="testimonials.html" class="px-2.5 py-1 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded border border-zinc-300">6. Testimonials</a>
+      <a href="contact.html" class="px-2.5 py-1 bg-zinc-900 text-white rounded border border-zinc-900">7. Contact</a>
+    </div>
+
+    <div class="text-xs font-mono text-zinc-600">
+      Ronkarlo.lanzanas905@gmail.com
+    </div>
+  </div>
+
+  <!-- CANVAS: CONTACT -->
+  <div class="lofi-canvas max-w-5xl mx-auto">
+    <header class="lofi-border-b px-6 sm:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="font-black text-xl uppercase tracking-tight">Ron Karlo Lanzanas</a>
+      <nav class="flex items-center space-x-6 text-sm font-bold uppercase tracking-wider">
+        <a href="index.html" class="hover:underline">HOME</a>
+        <a href="about.html" class="hover:underline">ABOUT</a>
+        <a href="skills.html" class="hover:underline">SKILLS</a>
+        <a href="portfolio.html" class="hover:underline">PORTFOLIO</a>
+        <a href="testimonials.html" class="hover:underline">TESTIMONIALS</a>
+        <a href="contact.html" class="underline decoration-2">CONTACT</a>
+      </nav>
+    </header>
+
+    <section class="px-6 sm:px-10 py-16">
+      
+      <div class="mb-8 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="mono text-xs text-zinc-500 font-bold uppercase">[ LOW-FI CONTACT WIREFRAME ]</span>
+          <span class="annotation-note">Annot: Rubric Item 6: Direct email, social links &amp; message prompt form</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-black uppercase tracking-tight">CONTACT &amp; CONNECT</h1>
+        <p class="text-sm text-zinc-600">Direct outreach channels for website projects and PC computer hardware repairs.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left: Email + Social Links -->
+        <div class="md:col-span-5 space-y-5">
+          
+          <div class="space-y-2">
+            <span class="annotation-note">Annot: Official Email Contact</span>
+            <div class="border-2 border-zinc-900 p-4 bg-zinc-50 space-y-2">
+              <span class="text-[10px] mono text-zinc-500 uppercase block font-bold">PRIMARY INBOX</span>
+              <strong class="text-sm mono block select-all break-all text-zinc-900">
+                Ronkarlo.lanzanas905@gmail.com
+              </strong>
+              <button onclick="copyEmail()" id="copyBtn" class="mt-2 text-xs bg-zinc-900 hover:bg-zinc-800 text-white px-3 py-1 font-bold uppercase cursor-pointer">
+                Copy Email Address
+              </button>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <span class="annotation-note">Annot: Social Links (Rubric: Facebook, Instagram, Behance)</span>
+            <div class="border-2 border-zinc-900 p-4 bg-zinc-50 space-y-2">
+              <span class="text-[10px] mono text-zinc-500 uppercase block font-bold">SOCIAL &amp; DESIGN PROFILES</span>
+              <div class="flex flex-wrap gap-2 text-xs font-mono">
+                <a href="#" class="border border-zinc-900 px-3 py-1 bg-white hover:bg-zinc-200">[ Facebook ]</a>
+                <a href="#" class="border border-zinc-900 px-3 py-1 bg-white hover:bg-zinc-200">[ Instagram ]</a>
+                <a href="#" class="border border-zinc-900 px-3 py-1 bg-white hover:bg-zinc-200">[ Behance ]</a>
+                <a href="#" class="border border-zinc-900 px-3 py-1 bg-white hover:bg-zinc-200">[ LinkedIn ]</a>
+                <a href="#" class="border border-zinc-900 px-3 py-1 bg-white hover:bg-zinc-200">[ GitHub ]</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-2 border-zinc-900 p-4 bg-zinc-50 space-y-1">
+            <span class="text-[10px] mono text-zinc-500 uppercase block font-bold">DEVELOPER PROFILE</span>
+            <div class="text-xs space-y-0.5">
+              <div><strong>Name:</strong> Ron Karlo Lanzanas</div>
+              <div><strong>Age:</strong> 20 Years Old</div>
+              <div><strong>Services:</strong> Web Design • Web Dev • Hardware Repair</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right: Simple Message Prompt Form -->
+        <div class="md:col-span-7 space-y-2">
+          <span class="annotation-note">Annot: Message Prompt Form (Input fields + Centered Button Box)</span>
+          <form onsubmit="handleSend(event)" class="space-y-3">
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1">Your Name / Email</label>
+              <input type="text" id="contactSender" required placeholder="Your name or email address" class="w-full border-2 border-zinc-900 bg-white px-4 py-2.5 text-xs sm:text-sm font-medium focus:outline-none focus:bg-zinc-50">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1">Subject / Service Needed</label>
+              <input type="text" id="contactSubject" required placeholder="Web Design / Web Dev / PC Hardware Repair" class="w-full border-2 border-zinc-900 bg-white px-4 py-2.5 text-xs sm:text-sm font-medium focus:outline-none focus:bg-zinc-50">
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase mb-1">Message Prompt</label>
+              <textarea id="contactMsg" rows="5" required placeholder="Describe your web requirements or computer hardware problem..." class="w-full border-2 border-zinc-900 bg-white px-4 py-2.5 text-xs sm:text-sm font-medium focus:outline-none focus:bg-zinc-50 resize-none"></textarea>
+            </div>
+
+            <div class="w-full border-2 border-zinc-900 bg-zinc-50 p-4 sm:p-5 flex items-center justify-center mt-2">
+              <button type="submit" class="border-2 border-zinc-900 bg-white hover:bg-zinc-900 hover:text-white px-8 py-3 font-bold uppercase text-xs sm:text-sm tracking-wider cursor-pointer transition">
+                [ BUTTON: SEND MESSAGE TO RON ]
+              </button>
+            </div>
+
+            <div id="noticeMsg" class="hidden text-xs text-center font-bold text-emerald-800 bg-emerald-100 p-2.5 border-2 border-emerald-400">
+              ✓ Message prepared for Ronkarlo.lanzanas905@gmail.com!
+            </div>
+          </form>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="lofi-border-t border-t-2 border-zinc-900 p-4 bg-zinc-50 flex items-center justify-between text-xs font-bold uppercase">
+      <a href="testimonials.html" class="hover:underline">← Flow: Back to 6. Testimonials</a>
+      <a href="index.html" class="hover:underline">Flow: Return to 1. Home →</a>
+    </div>
+  </div>
+
+  <script>
+    function copyEmail() {
+      const email = "Ronkarlo.lanzanas905@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.innerText = "✓ Copied!";
+        setTimeout(() => btn.innerText = "Copy Email Address", 2500);
+      });
+    }
+
+    function handleSend(e) {
+      e.preventDefault();
+      const sender = document.getElementById('contactSender').value;
+      const subject = document.getElementById('contactSubject').value;
+      const msg = document.getElementById('contactMsg').value;
+      const notice = document.getElementById('noticeMsg');
+
+      const mailto = `mailto:Ronkarlo.lanzanas905@gmail.com?subject=${encodeURIComponent(`[Portfolio Contact] ${subject}`)}&body=${encodeURIComponent(`From: ${sender}\n\n${msg}`)}`;
+      window.location.href = mailto;
+
+      notice.classList.remove('hidden');
+      setTimeout(() => notice.classList.add('hidden'), 5000);
+    }
+  </script>
+</body>
+</html>
