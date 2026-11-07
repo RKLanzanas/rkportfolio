@@ -56,17 +56,222 @@ p {
   text-justify: inter-word;
 }
 
-/* Ambient glow */
+/* Reactive Moving Objects Background */
 .bg-ambient {
   position: fixed;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1100px;
-  height: 650px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   pointer-events: none;
   z-index: 0;
+  perspective: 1000px;
+}
+
+.bg-cursor-orb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 520px;
+  margin-left: -260px;
+  margin-top: -260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.015) 45%, transparent 70%);
+  will-change: transform;
+  transition: background 0.4s ease;
+}
+
+[data-theme="light"] .bg-cursor-orb {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.06) 0%, rgba(0, 0, 0, 0.018) 45%, transparent 70%);
+}
+
+.bg-floating-obj {
+  position: absolute;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.obj-cube-wrap {
+  top: 16%;
+  left: 8%;
+}
+
+.obj-gyro-wrap {
+  top: 62%;
+  right: 9%;
+}
+
+.obj-prism-wrap {
+  top: 24%;
+  right: 16%;
+}
+
+.obj-torus-wrap {
+  top: 74%;
+  left: 14%;
+}
+
+.obj-minicube-wrap {
+  top: 46%;
+  left: 48%;
+}
+
+/* 3D Rotating Wireframe Cube */
+.obj-cube {
+  width: 76px;
+  height: 76px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateCube3D 22s linear infinite;
+}
+
+.obj-cube.mini {
+  width: 44px;
+  height: 44px;
+  animation: rotateCube3D 16s linear infinite reverse;
+}
+
+.cube-face {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.03) inset;
+}
+
+[data-theme="light"] .cube-face {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+.obj-cube .face-front  { transform: translateZ(38px); }
+.obj-cube .face-back   { transform: rotateY(180deg) translateZ(38px); }
+.obj-cube .face-right  { transform: rotateY(90deg) translateZ(38px); }
+.obj-cube .face-left   { transform: rotateY(-90deg) translateZ(38px); }
+.obj-cube .face-top    { transform: rotateX(90deg) translateZ(38px); }
+.obj-cube .face-bottom { transform: rotateX(-90deg) translateZ(38px); }
+
+.obj-cube.mini .face-front  { transform: translateZ(22px); }
+.obj-cube.mini .face-back   { transform: rotateY(180deg) translateZ(22px); }
+.obj-cube.mini .face-right  { transform: rotateY(90deg) translateZ(22px); }
+.obj-cube.mini .face-left   { transform: rotateY(-90deg) translateZ(22px); }
+.obj-cube.mini .face-top    { transform: rotateX(90deg) translateZ(22px); }
+.obj-cube.mini .face-bottom { transform: rotateX(-90deg) translateZ(22px); }
+
+@keyframes rotateCube3D {
+  0%   { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+  50%  { transform: rotateX(180deg) rotateY(220deg) rotateZ(90deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+/* Orbital Gyro Rings Object */
+.obj-gyro {
+  width: 118px;
+  height: 118px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: floatGyro 18s ease-in-out infinite;
+}
+
+.gyro-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+}
+
+[data-theme="light"] .gyro-ring {
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.gyro-ring.ring-1 {
+  animation: spinGyroRing1 12s linear infinite;
+}
+
+.gyro-ring.ring-2 {
+  inset: 14px;
+  border-style: dashed;
+  animation: spinGyroRing2 15s linear infinite reverse;
+}
+
+.gyro-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="light"] .gyro-core {
+  background: rgba(0, 0, 0, 0.35);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+@keyframes spinGyroRing1 {
+  0%   { transform: rotateX(65deg) rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(360deg) rotateZ(360deg); }
+}
+
+@keyframes spinGyroRing2 {
+  0%   { transform: rotateX(-45deg) rotateY(45deg) rotateZ(0deg); }
+  100% { transform: rotateX(-45deg) rotateY(45deg) rotateZ(360deg); }
+}
+
+@keyframes floatGyro {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%      { transform: translateY(-22px) rotate(12deg); }
+}
+
+/* Geometric Diamond Prism Object */
+.obj-prism {
+  width: 64px;
+  height: 64px;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent);
+  border-radius: 14px;
+  transform: rotate(45deg);
+  animation: floatPrism 14s ease-in-out infinite;
+}
+
+[data-theme="light"] .obj-prism {
+  border-color: rgba(0, 0, 0, 0.18);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.045), transparent);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+}
+
+@keyframes floatPrism {
+  0%, 100% { transform: rotate(45deg) translateY(0) scale(1); }
+  50%      { transform: rotate(135deg) translateY(-18px) scale(1.08); }
+}
+
+/* Floating Torus Ring Object */
+.obj-torus {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  border: 10px solid rgba(255, 255, 255, 0.06);
+  outline: 1.5px solid rgba(255, 255, 255, 0.13);
+  outline-offset: 6px;
+  animation: floatTorus 16s ease-in-out infinite;
+}
+
+[data-theme="light"] .obj-torus {
+  border-color: rgba(0, 0, 0, 0.07);
+  outline-color: rgba(0, 0, 0, 0.17);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+@keyframes floatTorus {
+  0%, 100% { transform: translate(0, 0) rotateX(35deg) rotateY(-25deg); }
+  50%      { transform: translate(16px, -20px) rotateX(55deg) rotateY(35deg); }
 }
 
 /* Container */
@@ -2210,7 +2415,54 @@ footer {
   opacity: 1;
 }
 
-/* Responsive */
+/* Scroll Reveal Animations (Placed after component rules so transition applies cleanly) */
+.scroll-reveal {
+  opacity: 0;
+  transform: translate3d(0, var(--reveal-offset, 28px), 0);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, background-color 0.35s ease, box-shadow 0.35s ease;
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Mobile Hamburger Button (Hidden on Desktop) */
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition-smooth);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-menu-btn:hover {
+  border-color: var(--border-focus);
+  background: var(--badge-bg);
+}
+
+/* iOS & Mobile Touch Optimizations */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Responsive: Tablets & Mobile Navigation (<= 960px) */
 @media (max-width: 960px) {
   .hero-grid,
   .about-grid,
@@ -2224,11 +2476,11 @@ footer {
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 2.75rem;
   }
 
   .hero-title span {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
 
   .skills-grid,
@@ -2237,7 +2489,422 @@ footer {
     grid-template-columns: 1fr;
   }
 
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+
   .nav-links {
+    position: fixed;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: rgba(12, 12, 16, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 1rem 1.5rem 1.4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
+    z-index: 99;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(250, 250, 252, 0.97);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+  }
+
+  .nav-links.mobile-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 0.75rem 0.9rem;
+    font-size: 0.98rem;
+    font-weight: 600;
+    border-radius: 12px;
+  }
+
+  .nav-links li a.active,
+  .nav-links li a:hover {
+    background: var(--badge-bg);
+  }
+
+  .nav-links li a::after {
     display: none;
+  }
+
+  .hero-card-stack {
+    max-width: 390px;
+    margin: 0 auto;
+  }
+
+  .cv-card-identity {
+    max-width: 440px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Responsive: Smartphones — iPhone & Android (<= 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding-left: max(1.15rem, env(safe-area-inset-left));
+    padding-right: max(1.15rem, env(safe-area-inset-right));
+  }
+
+  /* Avoid awkward justified rivers of whitespace on narrow phone screens */
+  p,
+  .about-content p,
+  .testimonial-text,
+  .contact-info-col > p,
+  .cv-item-desc li {
+    text-align: left;
+  }
+
+  .nav-inner {
+    height: 68px;
+  }
+
+  .nav-links {
+    top: 68px;
+  }
+
+  .nav-logo-img {
+    height: 42px;
+    max-width: 66px;
+  }
+
+  .nav-actions {
+    gap: 0.55rem;
+  }
+
+  .nav-cta-btn {
+    padding: 0.45rem 0.9rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .theme-toggle-btn,
+  .mobile-menu-btn {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+  }
+
+  /* Hero Section on Mobile */
+  .hero-section {
+    padding: 2.6rem 0 3rem;
+  }
+
+  .hero-grid {
+    gap: 2rem;
+  }
+
+  .hero-meta {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.7rem;
+    line-height: 1.4;
+    white-space: normal;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8.5vw, 2.5rem);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-title span {
+    font-size: clamp(1.25rem, 5.4vw, 1.65rem);
+    margin-top: 0.25rem;
+  }
+
+  .hero-description {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    padding: 0.78rem 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .hero-card-stack {
+    max-width: 310px;
+  }
+
+  .hero-portrait-cutout {
+    transform: scale(1.06);
+  }
+
+  .profile-badge-overlay {
+    left: 0.6rem;
+    right: 0.6rem;
+    bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 14px;
+  }
+
+  .badge-name {
+    font-size: 0.88rem;
+  }
+
+  .badge-role {
+    font-size: 0.68rem;
+  }
+
+  /* Sections & Cards on Mobile */
+  .section-padding,
+  .cv-overview-section {
+    padding: 3.2rem 0;
+  }
+
+  .section-header {
+    margin-bottom: 1.4rem;
+    gap: 0.8rem;
+  }
+
+  .section-title,
+  .about-content .section-title,
+  .contact-info-col h3 {
+    font-size: clamp(1.55rem, 6.5vw, 1.95rem);
+    line-height: 1.2;
+  }
+
+  .about-content,
+  .skill-category-card,
+  .testimonial-card,
+  .contact-info-col,
+  .contact-form-card,
+  .cv-card-identity,
+  .cv-block {
+    padding: 1.45rem 1.3rem;
+    border-radius: 18px;
+  }
+
+  .about-stat {
+    padding: 1.35rem 1.4rem;
+    border-radius: 16px;
+  }
+
+  .about-stat-num {
+    font-size: 1.7rem;
+  }
+
+  .about-email-box {
+    padding: 0.95rem 1.1rem;
+  }
+
+  /* Portfolio Categories & Touch Carousels */
+  .category-quick-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.6rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .category-quick-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cat-pill-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.78rem;
+  }
+
+  .category-name {
+    font-size: 1.15rem;
+  }
+
+  .category-subtitle {
+    font-size: 0.76rem;
+  }
+
+  .project-card {
+    flex: 0 0 82vw;
+    max-width: 295px;
+  }
+
+  .project-card-thumb {
+    height: 175px;
+  }
+
+  /* Modal & Fanned Playing Cards on Mobile / iOS */
+  .project-modal {
+    padding: 0.75rem;
+    align-items: flex-end;
+  }
+
+  .modal-dialog {
+    max-height: 90vh;
+    max-height: 90dvh;
+    border-radius: 20px;
+  }
+
+  .modal-header {
+    padding: 1.2rem 1.3rem;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+  }
+
+  .modal-body {
+    padding: 1.25rem 1.3rem;
+    gap: 1.4rem;
+  }
+
+  .fanned-deck-cards {
+    height: 265px;
+  }
+
+  .fanned-card {
+    width: 170px;
+    height: 238px;
+    padding: 6px 6px 22px;
+  }
+
+  .fanned-deck-counter {
+    font-size: 0.65rem;
+    text-align: center;
+  }
+
+  .modal-footer {
+    padding: 1.1rem 1.3rem;
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .modal-footer > button,
+  .modal-footer > div {
+    width: 100%;
+  }
+
+  .modal-footer > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Prevent iOS Safari auto-zoom on form input focus (requires >= 16px) */
+  .form-control {
+    font-size: 16px;
+    padding: 0.85rem 1rem;
+  }
+
+  /* Footer on Mobile */
+  footer {
+    padding: 3rem 0 calc(2rem + env(safe-area-inset-bottom));
+  }
+
+  .footer-main-grid {
+    gap: 1.8rem;
+    margin-bottom: 2.2rem;
+  }
+
+  .footer-logo-img {
+    height: 52px;
+  }
+
+  .footer-brand-text {
+    font-size: 1.75rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  /* Toast Notification on Mobile */
+  .toast {
+    left: 1rem;
+    right: 1rem;
+    bottom: max(1.2rem, env(safe-area-inset-bottom));
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem 1.2rem;
+    font-size: 0.82rem;
+  }
+
+  /* Scale down background floating objects on phone viewports */
+  .obj-cube {
+    width: 50px;
+    height: 50px;
+  }
+  .obj-cube .face-front  { transform: translateZ(25px); }
+  .obj-cube .face-back   { transform: rotateY(180deg) translateZ(25px); }
+  .obj-cube .face-right  { transform: rotateY(90deg) translateZ(25px); }
+  .obj-cube .face-left   { transform: rotateY(-90deg) translateZ(25px); }
+  .obj-cube .face-top    { transform: rotateX(90deg) translateZ(25px); }
+  .obj-cube .face-bottom { transform: rotateX(-90deg) translateZ(25px); }
+
+  .obj-gyro {
+    width: 78px;
+    height: 78px;
+  }
+
+  .obj-prism {
+    width: 44px;
+    height: 44px;
+  }
+
+  .obj-torus {
+    width: 58px;
+    height: 58px;
+    border-width: 7px;
+  }
+
+  .bg-cursor-orb {
+    width: 320px;
+    height: 320px;
+    margin-left: -160px;
+    margin-top: -160px;
+  }
+}
+
+/* Responsive: Compact Phones — iPhone SE / Mini & Small Android (<= 380px) */
+@media (max-width: 380px) {
+  .hero-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  .cv-data-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fanned-card {
+    width: 148px;
+    height: 210px;
   }
 }

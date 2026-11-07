@@ -300,47 +300,11 @@ function handleCardClick(id) {
   openProjectModal(id);
 }
 
-// Select project and update detail pane
+// Select project and update active card highlight
 function selectProject(id) {
   const p = allProjects.find(item => item.id === id);
   if (!p) return;
   currentActiveId = id;
-
-  document.getElementById('detailNumber').textContent = p.num;
-  document.getElementById('detailTitle').textContent = p.title;
-  document.getElementById('detailProblem').textContent = p.problem;
-  document.getElementById('detailTech').textContent = p.tech;
-  document.getElementById('detailOutcome').textContent = p.outcome;
-
-  const devsBox = document.getElementById('detailDevsBox');
-  const devsEl = document.getElementById('detailDevs');
-  if (devsBox && devsEl) {
-    if (p.developers) {
-      devsBox.style.display = 'block';
-      devsEl.textContent = p.developers;
-    } else {
-      devsBox.style.display = 'none';
-    }
-  }
-
-  const viewBtn = document.getElementById('detailViewBtn');
-  if (viewBtn) {
-    viewBtn.href = p.viewUrl;
-    viewBtn.innerHTML = `<span>${p.ctaText}</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-  }
-
-  const driveBtn = document.getElementById('detailDriveBtn');
-  if (driveBtn) {
-    driveBtn.href = p.externalUrl;
-    driveBtn.innerHTML = `<span>${p.secondaryCtaText}</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>`;
-  }
-
-  const previewImg = document.getElementById('detailPreviewImg');
-  if (previewImg) {
-    previewImg.src = p.image;
-    previewImg.alt = p.title;
-    previewImg.onclick = () => openProjectModal(p.id);
-  }
 
   // Update card active highlights
   document.querySelectorAll('.project-card').forEach(card => {
@@ -372,9 +336,10 @@ function renderFannedDeck() {
 
     const mid = (total - 1) / 2;
     const rel = idx - mid;
-    const angle = rel * 11; // fan angle per card
-    const shiftX = rel * 34; // horizontal spread
-    const shiftY = Math.abs(rel) * 8 - (isFront ? 14 : 0);
+    const isMobile = window.innerWidth <= 640;
+    const angle = rel * (isMobile ? 9 : 11); // fan angle per card
+    const shiftX = rel * (isMobile ? 20 : 34); // responsive horizontal spread
+    const shiftY = Math.abs(rel) * (isMobile ? 6 : 8) - (isFront ? (isMobile ? 10 : 14) : 0);
     const scale = isFront ? 1.05 : 0.94;
     const zIndex = isFront ? 30 : 10 + idx;
 
@@ -590,10 +555,164 @@ function showToast(text) {
   }
 }
 
+// Scroll-Reveal Animation across Page Sections & Cards (Synced with Scroll Direction)
+function initScrollAnimations() {
+  const revealSelectors = [
+    '.hero-text-content',
+    '.hero-image-wrapper',
+    '.section-header',
+    '.about-content',
+    '.about-stat',
+    '.cv-card-identity',
+    '.cv-block',
+    '.skill-category-card',
+    '.category-quick-nav',
+    '.category-header',
+    '.project-card',
+    '.testimonial-card',
+    '.contact-info-col',
+    '.contact-form-card',
+    '.footer-brand-wrap',
+    '.footer-col'
+  ];
+
+  let lastScrollTop = window.pageYOffset || 0;
+  window.addEventListener('scroll', () => {
+    const st = window.pageYOffset || 0;
+    const scrollingDown = st >= lastScrollTop;
+    document.documentElement.style.setProperty('--reveal-offset', scrollingDown ? '24px' : '-24px');
+    lastScrollTop = st;
+  }, { passive: true });
+
+  const elements = document.querySelectorAll(revealSelectors.join(', '));
+  elements.forEach((el) => {
+    el.classList.add('scroll-reveal');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const el = entry.target;
+      if (entry.isIntersecting) {
+        const siblingIndex = Array.from(el.parentElement ? el.parentElement.children : []).indexOf(el);
+        const delayMs = Math.min(Math.max(0, siblingIndex) * 55, 180);
+        el.style.transitionDelay = `${delayMs}ms`;
+        el.classList.add('is-visible');
+      } else {
+        el.style.transitionDelay = '0ms';
+        el.classList.remove('is-visible');
+      }
+    });
+  }, {
+    threshold: 0.06,
+    rootMargin: '0px 0px -20px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+// Reactive Moving Background Objects (Smoothly Synced with Content Scroll & Cursor)
+function initReactiveBackgroundObjects() {
+  const objects = document.querySelectorAll('.bg-floating-obj');
+  const cursorOrb = document.getElementById('bgCursorOrb');
+  if (!objects.length && !cursorOrb) return;
+
+  let mouseX = window.innerWidth * 0.5;
+  let mouseY = window.innerHeight * 0.35;
+  let currentX = mouseX;
+  let currentY = mouseY;
+  let targetScrollY = window.pageYOffset || 0;
+  let currentScrollY = targetScrollY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches.length > 0) {
+      mouseX = e.touches[0].clientX;
+      mouseY = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('scroll', () => {
+    targetScrollY = window.pageYOffset || 0;
+  }, { passive: true });
+
+  function animateBackground() {
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
+    currentScrollY += (targetScrollY - currentScrollY) * 0.14;
+
+    if (cursorOrb) {
+      cursorOrb.style.transform = `translate3d(${currentX.toFixed(1)}px, ${currentY.toFixed(1)}px, 0)`;
+    }
+
+    const offsetX = currentX - window.innerWidth * 0.5;
+    const offsetY = currentY - window.innerHeight * 0.5;
+
+    objects.forEach((obj, idx) => {
+      const depth = parseFloat(obj.getAttribute('data-depth') || '0.2');
+      const moveX = offsetX * depth * 0.28;
+      // Smoothly travel in the exact direction of page content without any wrap jumps
+      const scrollShift = -(currentScrollY * depth * 0.38);
+      const moveY = offsetY * depth * 0.28 + scrollShift;
+      const rotZ = (currentScrollY * depth * 0.06) * (idx % 2 === 0 ? 1 : -1);
+
+      obj.style.transform = `translate3d(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px, 0) rotateZ(${rotZ.toFixed(2)}deg)`;
+    });
+
+    requestAnimationFrame(animateBackground);
+  }
+
+  requestAnimationFrame(animateBackground);
+}
+
+// Mobile Navigation Drawer (iPhone / Android / Tablet)
+function initMobileMenu() {
+  const menuBtn = document.getElementById('mobileMenuBtn');
+  const navMenu = document.getElementById('navLinksMenu');
+  if (!menuBtn || !navMenu) return;
+
+  function closeMenu() {
+    navMenu.classList.remove('mobile-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = navMenu.classList.toggle('mobile-open');
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+  });
+
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMenu();
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('mobile-open') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 960) {
+      closeMenu();
+    }
+  });
+}
+
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initMobileMenu();
   initScrollSpy();
   renderCategories();
   selectProject('codeshark');
+  initScrollAnimations();
+  initReactiveBackgroundObjects();
 });
