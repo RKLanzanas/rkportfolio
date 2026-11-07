@@ -17,18 +17,18 @@
 }
 
 [data-theme="light"] {
-  --bg-primary: #f8f8fa;
-  --bg-secondary: #ececf2;
+  --bg-primary: #f6f6f9;
+  --bg-secondary: #eaeaef;
   --bg-card: #ffffff;
-  --bg-card-hover: #f9f9fb;
-  --border-color: rgba(0, 0, 0, 0.09);
-  --border-focus: rgba(0, 0, 0, 0.28);
-  --text-main: #0e0e12;
-  --text-muted: #5e5e6f;
-  --text-dim: #9898a6;
-  --accent-white: #0a0a0d;
-  --accent-glow: rgba(0, 0, 0, 0.04);
-  --badge-bg: rgba(0, 0, 0, 0.05);
+  --bg-card-hover: #f9f9fc;
+  --border-color: rgba(0, 0, 0, 0.14);
+  --border-focus: rgba(0, 0, 0, 0.38);
+  --text-main: #050507;
+  --text-muted: #1f1f26;
+  --text-dim: #444452;
+  --accent-white: #050507;
+  --accent-glow: rgba(0, 0, 0, 0.06);
+  --badge-bg: rgba(0, 0, 0, 0.06);
 }
 
 * {
@@ -91,7 +91,8 @@ header {
 }
 
 [data-theme="light"] header {
-  background: rgba(248, 248, 250, 0.9);
+  background: rgba(246, 246, 249, 0.92);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
 }
 
 .nav-inner {
@@ -120,6 +121,10 @@ header {
   object-fit: contain;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
   transition: var(--transition-smooth);
+}
+
+[data-theme="light"] .nav-logo-img {
+  filter: brightness(0) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.25));
 }
 
 .brand-logo:hover .nav-logo-img {
@@ -2045,12 +2050,61 @@ footer {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
 }
 
+[data-theme="light"] .footer-logo-img {
+  filter: brightness(0) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.28));
+}
+
 .footer-brand-text {
   font-size: 2.2rem;
   font-weight: 900;
   letter-spacing: -0.05em;
   line-height: 1;
   color: var(--text-main);
+}
+
+[data-theme="light"] .footer-brand-text,
+[data-theme="light"] .hero-title,
+[data-theme="light"] .section-title {
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.09);
+}
+
+[data-theme="light"] .hero-title span {
+  color: #1f1f28;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .about-content,
+[data-theme="light"] .about-stat,
+[data-theme="light"] .skill-category-card,
+[data-theme="light"] .testimonial-card,
+[data-theme="light"] .contact-info-col,
+[data-theme="light"] .contact-form-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .project-detail-panel,
+[data-theme="light"] .cv-card-identity,
+[data-theme="light"] .cv-block {
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .profile-badge-overlay {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.16);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14);
+}
+
+[data-theme="light"] .quote-icon {
+  color: var(--text-main);
+  opacity: 0.35;
+}
+
+[data-theme="light"] .btn-outline,
+[data-theme="light"] .cat-pill-btn,
+[data-theme="light"] .skill-tag,
+[data-theme="light"] .cv-pill,
+[data-theme="light"] .social-btn,
+[data-theme="light"] .theme-toggle-btn {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .footer-brand-tagline {
