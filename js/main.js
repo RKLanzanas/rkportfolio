@@ -706,6 +706,82 @@ function initMobileMenu() {
   });
 }
 
+// Interactive Newspaper-Cartoon Head Following Cursor (Instant Invert + Up/Down Rotation)
+function initHeadFollowCursor() {
+  const headImg = document.getElementById('heroHeadImg');
+  const card = document.getElementById('heroProfileCard');
+  if (!headImg || !card) return;
+
+  // Oversized newspaper-cartoon head scale
+  const baseHeadScale = 1.85;
+
+  let targetX = 0;
+  let targetY = 0;
+  let targetRot = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let currentRot = 0;
+  // +1 = facing left (original photo direction), -1 = inverted facing right
+  let flipDir = 1;
+
+  function updateFromPointer(clientX, clientY) {
+    const rect = card.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    // Neck/chin pivot in the 1313x1313 cutout coordinates
+    const pivotX = rect.left + rect.width * 0.508;
+    const pivotY = rect.top + rect.height * 0.245;
+
+    const dx = clientX - pivotX;
+    const dy = clientY - pivotY;
+
+    // Instant horizontal inversion with zero animation when looking the other way
+    if (dx > 2) {
+      flipDir = -1;
+    } else if (dx < -2) {
+      flipDir = 1;
+    }
+
+    // Up and down rotation so the face always tilts toward the cursor height
+    // Because scale(scaleX, scaleY) precedes rotate(deg) and the unflipped face looks left,
+    // positive deg tilts the face UP on both sides and negative deg tilts the face DOWN on both sides.
+    const verticalAngle = -Math.atan2(dy, Math.max(45, Math.abs(dx))) * (180 / Math.PI);
+    targetRot = Math.max(-38, Math.min(38, verticalAngle * 0.85));
+
+    // Up/down and left/right cartoon bobbing offset
+    const normX = Math.max(-1, Math.min(1, dx / (window.innerWidth * 0.35)));
+    const normY = Math.max(-1, Math.min(1, dy / (window.innerHeight * 0.35)));
+    targetX = normX * 10;
+    targetY = normY * 14;
+  }
+
+  window.addEventListener('mousemove', (e) => {
+    updateFromPointer(e.clientX, e.clientY);
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches.length > 0) {
+      updateFromPointer(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  function animateHead() {
+    currentX += (targetX - currentX) * 0.22;
+    currentY += (targetY - currentY) * 0.22;
+    currentRot += (targetRot - currentRot) * 0.24;
+
+    // Apply flipDir directly without interpolation so horizontal inversion has zero animation
+    const scaleX = flipDir * baseHeadScale;
+    const scaleY = baseHeadScale;
+
+    headImg.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) scale(${scaleX}, ${scaleY}) rotate(${currentRot.toFixed(2)}deg)`;
+
+    requestAnimationFrame(animateHead);
+  }
+
+  requestAnimationFrame(animateHead);
+}
+
 // Initialize on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -715,4 +791,5 @@ document.addEventListener('DOMContentLoaded', () => {
   selectProject('codeshark');
   initScrollAnimations();
   initReactiveBackgroundObjects();
+  initHeadFollowCursor();
 });

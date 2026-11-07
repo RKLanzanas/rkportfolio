@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>Ron Karlo Lanzanas — Creative &amp; Technical Portfolio</title>
   
-  <!-- Website Favicon from uploaded logo -->
+  <!-- Website Favicon & iOS Touch Icon from uploaded logo -->
   <link rel="icon" type="image/png" href="site-logo.png">
+  <link rel="apple-touch-icon" href="site-logo.png">
 
   <!-- Modern Clean Typography Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,8 +24,53 @@
 </head>
 <body>
 
-  <!-- Ambient lighting effect -->
-  <div class="bg-ambient"></div>
+  <!-- Reactive Moving Objects Background -->
+  <div class="bg-ambient" id="bgReactiveStage" aria-hidden="true">
+    <div class="bg-cursor-orb" id="bgCursorOrb"></div>
+
+    <!-- Moving 3D Wireframe Cube Object -->
+    <div class="bg-floating-obj obj-cube-wrap" data-depth="0.22">
+      <div class="obj-cube">
+        <span class="cube-face face-front"></span>
+        <span class="cube-face face-back"></span>
+        <span class="cube-face face-right"></span>
+        <span class="cube-face face-left"></span>
+        <span class="cube-face face-top"></span>
+        <span class="cube-face face-bottom"></span>
+      </div>
+    </div>
+
+    <!-- Moving Orbital Gyro Ring Object -->
+    <div class="bg-floating-obj obj-gyro-wrap" data-depth="0.16">
+      <div class="obj-gyro">
+        <span class="gyro-ring ring-1"></span>
+        <span class="gyro-ring ring-2"></span>
+        <span class="gyro-core"></span>
+      </div>
+    </div>
+
+    <!-- Moving Geometric Prism / Diamond Object -->
+    <div class="bg-floating-obj obj-prism-wrap" data-depth="0.28">
+      <div class="obj-prism"></div>
+    </div>
+
+    <!-- Moving Floating Capsule / Torus Object -->
+    <div class="bg-floating-obj obj-torus-wrap" data-depth="0.19">
+      <div class="obj-torus"></div>
+    </div>
+
+    <!-- Moving Secondary Mini Cube Object -->
+    <div class="bg-floating-obj obj-minicube-wrap" data-depth="0.25">
+      <div class="obj-cube mini">
+        <span class="cube-face face-front"></span>
+        <span class="cube-face face-back"></span>
+        <span class="cube-face face-right"></span>
+        <span class="cube-face face-left"></span>
+        <span class="cube-face face-top"></span>
+        <span class="cube-face face-bottom"></span>
+      </div>
+    </div>
+  </div>
 
   <!-- Header / Navigation Bar -->
   <header>
@@ -31,7 +79,7 @@
         <img src="site-logo.png" alt="Ron Karlo Lanzanas Logo" class="nav-logo-img">
       </a>
 
-      <ul class="nav-links">
+      <ul class="nav-links" id="navLinksMenu">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#profile-overview">Profile &amp; CV</a></li>
@@ -45,7 +93,10 @@
         <button id="themeToggle" class="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
           <i class="fa-solid fa-moon"></i>
         </button>
-        <a href="#contact" class="btn btn-outline" style="padding: 0.55rem 1.25rem; font-size: 0.85rem;">Let's Talk</a>
+        <a href="#contact" class="btn btn-outline nav-cta-btn" style="padding: 0.55rem 1.25rem; font-size: 0.85rem;">Let's Talk</a>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" title="Open Menu" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </div>
     </div>
   </header>
@@ -81,12 +132,12 @@
         </div>
       </div>
 
-      <!-- Hero Portrait Cutout with Interactive Cursor-Following Head -->
+      <!-- Hero Portrait Cutout (No Background) -->
       <div class="hero-image-wrapper">
         <div class="hero-card-stack">
           <div class="profile-card" id="heroProfileCard">
-            <img src="ron-body-nobg.png" id="heroBodyImg" class="hero-body-layer" alt="Ron Karlo Lanzanas Body Cutout">
-            <img src="ron-head-nobg.png" id="heroHeadImg" class="hero-head-layer" alt="Ron Karlo Lanzanas Interactive Head">
+            <img src="ron-body-nobg.png" id="heroBodyImg" class="hero-portrait-cutout hero-body-layer" alt="Ron Karlo Lanzanas Body">
+            <img src="ron-head-nobg.png" id="heroHeadImg" class="hero-portrait-cutout hero-head-layer" alt="Ron Karlo Lanzanas Head">
 
             <div class="profile-badge-overlay">
               <div>
@@ -417,78 +468,6 @@
       <!-- Categories Container (Separate category sections rendered by main.js) -->
       <div id="categoriesContainer"></div>
 
-      <!-- Project Detail Box with Live Preview and Redirect Action Links -->
-      <div class="project-detail-panel" id="projectDetailPanel">
-        <div class="project-detail-header">
-          <div>
-            <div class="section-label" id="detailNumber">PROJECT № 01</div>
-            <h3 class="project-detail-title" id="detailTitle">CodeShark</h3>
-          </div>
-          <div style="display: flex; gap: 0.8rem; flex-wrap: wrap;">
-            <a href="https://drive.google.com/drive/folders/1fra4YcWejXfrocQfoYDBPHqZmjQgm9KX" target="_blank" rel="noopener noreferrer" id="detailViewBtn" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.88rem;">
-              <span>Download CodeShark</span>
-              <i class="fa-solid fa-download"></i>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1fra4YcWejXfrocQfoYDBPHqZmjQgm9KX" target="_blank" rel="noopener noreferrer" id="detailDriveBtn" class="btn btn-outline" style="padding: 0.65rem 1.3rem; font-size: 0.88rem;">
-              <span>Open Project Folder</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-          </div>
-        </div>
-
-        <div class="project-detail-grid">
-          <div>
-            <div class="detail-grid">
-              <div class="detail-item">
-                <h4><i class="fa-solid fa-triangle-exclamation"></i> Problem</h4>
-                <p id="detailProblem">
-                  Creating an engaging, gamified desktop learning tool where programming students practice coding syntax, typing speed (WPM), accuracy, and problem solving in solo and local multiplayer modes.
-                </p>
-              </div>
-
-              <div class="detail-item">
-                <h4><i class="fa-solid fa-code"></i> Tech Stack / Tools</h4>
-                <p id="detailTech">
-                  GameMaker Studio, GML (GameMaker Language), Sound Design, Local Multiplayer Socket / Peer Architecture, UI State Machine.
-                </p>
-              </div>
-
-              <div class="detail-item">
-                <h4><i class="fa-solid fa-circle-check"></i> Outcome</h4>
-                <p id="detailOutcome">
-                  Designed and engineered a complete interactive game featuring single player modes, local multiplayer lobby, WPM tracking, and sound system.
-                </p>
-              </div>
-            </div>
-
-            <!-- Developers attribution field (shown ONLY when developers are defined) -->
-            <div id="detailDevsBox" style="margin-bottom: 1.8rem; padding: 0.9rem 1.2rem; background: var(--badge-bg); border: 1px solid var(--border-color); border-radius: 12px;">
-              <span style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-dim); display: block; margin-bottom: 0.2rem;">
-                <i class="fa-solid fa-users"></i> Project Developers
-              </span>
-              <span id="detailDevs" style="font-size: 0.9rem; font-weight: 600; color: var(--text-main);">
-                Lanzanas, Ron Karlo &bull; Cacao, John Carlo &bull; Jacobo, Elijah Gabriel
-              </span>
-            </div>
-
-            <div class="detail-actions">
-              <a href="#contact" class="btn btn-outline" style="padding: 0.75rem 1.6rem;">
-                <span>Inquire About Similar Work</span>
-                <i class="fa-solid fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- Clickable Sidebar Thumbnail that also redirects to the project view -->
-          <div class="detail-preview-box" title="Click to view full asset" id="detailPreviewBox">
-            <img src="project_codeshark.jpg" id="detailPreviewImg" alt="Project Preview">
-            <div class="detail-preview-badge">
-              <i class="fa-solid fa-expand"></i> Click to Open Full Asset
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -529,9 +508,9 @@
             </p>
           </div>
           <div class="testimonial-author">
-            <div class="author-avatar">CS</div>
+            <div class="author-avatar">DCI</div>
             <div>
-              <div class="author-name">Computer Studies Instructor</div>
+              <div class="author-name">Department of Computing and Informatics Instructor</div>
               <div class="author-title">Faculty Reviewer</div>
             </div>
           </div>
@@ -680,7 +659,7 @@
             rmlanzanas@ccc.edu.ph
           </a>
           <p style="font-size: 0.78rem; color: var(--text-dim); margin-top: 0.5rem; line-height: 1.5;">
-            City College of Calamba &bull; 3CS5 Department of Computer Studies
+            City College of Calamba &bull; 3CS5 Department of Computing and Informatics
           </p>
         </div>
       </div>
